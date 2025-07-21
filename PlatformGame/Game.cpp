@@ -1,9 +1,12 @@
 #include "Game.h"
 #include "Resources.h"
+#include "Map.h"
 
 // dependencies 
 #include <filesystem>
 
+Map map;
+Camera camera(320.0f);
 
 void Game_Begin(const sf::RenderWindow& window)
 {
@@ -26,6 +29,9 @@ void Game_Begin(const sf::RenderWindow& window)
 			}
 		}
     }
+
+	map.Create_Map_From_Txt_File("map.txt");
+	camera.position = sf::Vector2f(160.0f, 160.0f);
 }
 
 void Game_Update(float deltaTime)
@@ -35,5 +41,5 @@ void Game_Update(float deltaTime)
 
 void Game_Render(Renderer& renderer)
 {
-	renderer.Draw(Resources::textures["grass-block.png"], sf::Vector2f(), sf::Vector2f(2, 2));
+	map.Draw(renderer);
 }

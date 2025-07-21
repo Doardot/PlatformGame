@@ -7,7 +7,6 @@ int main() {
     sf::RenderWindow window(sf::VideoMode({ 800, 800 }), "Platform Game");
     window.setFramerateLimit(60);
     sf::Clock deltaClock;
-    Camera camera;
     Renderer renderer(window);
 
     Game_Begin(window);

@@ -30,6 +30,9 @@
     <ClCompile Include="Resources.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -44,6 +47,9 @@
     <ClInclude Include="Resources.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\terrain\Terrain.png">
@@ -52,5 +58,8 @@
     <Image Include="assets\terrain\grass-block.png">
       <Filter>Resource Files</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="map.txt" />
   </ItemGroup>
 </Project>

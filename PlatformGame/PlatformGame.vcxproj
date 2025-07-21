@@ -143,18 +143,23 @@
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Map.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Resources.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Map.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="Resources.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\terrain\grass-block.png" />
     <Image Include="assets\terrain\Terrain.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="map.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
