@@ -58,6 +58,9 @@
     <Image Include="assets\terrain\grass-block.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="assets\map\map.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Text Include="map.txt" />

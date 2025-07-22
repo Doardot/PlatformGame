@@ -34,6 +34,22 @@ void Map::Create_Map_From_Txt_File(const std::string& filepath)
     }
 }
 
+void Map::Create_Map_From_Image(const sf::Image& image)
+{
+    grid.clear();
+    grid = std::vector(image.getSize().x, std::vector(image.getSize().y, 0));
+
+    for (size_t x = 0; x < grid.size(); x++)
+    {
+        for (size_t y = 0; y < grid[x].size(); y++)
+        {
+            sf::Color color = image.getPixel(sf::Vector2u(x, y));
+            if (color == sf::Color::Black)
+                grid[x][y] = 1;
+        }
+    }
+}
+
 void Map::Draw(Renderer& renderer)
 {
     int x = 0;

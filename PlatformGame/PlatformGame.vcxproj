@@ -155,6 +155,7 @@
     <ClInclude Include="Resources.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="assets\map\map.png" />
     <Image Include="assets\terrain\grass-block.png" />
     <Image Include="assets\terrain\Terrain.png" />
   </ItemGroup>

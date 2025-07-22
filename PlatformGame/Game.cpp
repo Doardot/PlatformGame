@@ -3,9 +3,10 @@
 #include "Map.h"
 
 // dependencies 
+#include <SFML/Graphics.hpp>
 #include <filesystem>
 
-Map map;
+Map map(16.0f);
 Camera camera(320.0f);
 
 void Game_Begin(const sf::RenderWindow& window)
@@ -30,13 +31,26 @@ void Game_Begin(const sf::RenderWindow& window)
 		}
     }
 
-	map.Create_Map_From_Txt_File("map.txt");
+	sf::Image image;
+	image.loadFromFile("./assets/map/map.png");
+	map.Create_Map_From_Image(image);
+	//map.Create_Map_From_Txt_File("map.txt");
+
 	camera.position = sf::Vector2f(160.0f, 160.0f);
 }
 
 void Game_Update(float deltaTime)
 {
+	const float movementSpeed = 100.0f;
+	float move = movementSpeed;
 
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::LShift))
+		move *= 2;
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right))
+		camera.position.x += move * deltaTime;
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left))
+		camera.position.x -= move * deltaTime;
 }
 
 void Game_Render(Renderer& renderer)
