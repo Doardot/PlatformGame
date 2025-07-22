@@ -34,10 +34,12 @@ void Map::Create_Map_From_Txt_File(const std::string& filepath)
     }
 }
 
-void Map::Create_Map_From_Image(const sf::Image& image)
+sf::Vector2f Map::Create_Map_From_Image(const sf::Image& image)
 {
     grid.clear();
     grid = std::vector(image.getSize().x, std::vector(image.getSize().y, 0));
+
+    sf::Vector2f playerPosition{};
 
     for (size_t x = 0; x < grid.size(); x++)
     {
@@ -46,8 +48,12 @@ void Map::Create_Map_From_Image(const sf::Image& image)
             sf::Color color = image.getPixel(sf::Vector2u(x, y));
             if (color == sf::Color::Black)
                 grid[x][y] = 1;
+            else if (color == sf::Color::Red) // TO-DO: What if there are multiple red pixels?
+                playerPosition = sf::Vector2f(cellSize * x + cellSize / 2.0f, cellSize * y + cellSize / 2.0f);
         }
     }
+
+	return playerPosition;
 }
 
 void Map::Draw(Renderer& renderer)
@@ -61,8 +67,8 @@ void Map::Draw(Renderer& renderer)
             if (cell)
             {
                 renderer.Draw(Resources::textures["grass-block.png"],
-                    sf::Vector2f(cellSize * x + cellSize / 2.0f, cellSize * y + cellSize / 2.0f),
-                    sf::Vector2f(cellSize, cellSize));
+					sf::Vector2f(cellSize * x + cellSize / 2.0f, cellSize * y + cellSize / 2.0f), // cell center position
+					sf::Vector2f(cellSize, cellSize));                                            // cell size
             }
             y++;
         }

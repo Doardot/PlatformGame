@@ -22,7 +22,7 @@ void Renderer::Draw(const sf::Texture& texture, const sf::Vector2f& position, co
 	// TO-DO: Render sprites from spritesheet
 	//sprite->setTextureRect(sourceRect);
 
-	sprite->setTexture(texture);
+	sprite->setTexture(texture, true);
 	sprite->setOrigin((sf::Vector2f)texture.getSize() / 2.0f);
 	sprite->setPosition(position);
 	sprite->setScale(sf::Vector2f(size.x / texture.getSize().x,

@@ -1,6 +1,7 @@
 #include "Game.h"
 #include "Resources.h"
 #include "Map.h"
+#include "Player.h"
 
 // dependencies 
 #include <SFML/Graphics.hpp>
@@ -9,6 +10,7 @@
 Map map(16.0f);
 Camera camera(320.0f);
 Resources resources;
+Player player;
 
 void Game_Begin(const sf::RenderWindow& window)
 {
@@ -16,28 +18,20 @@ void Game_Begin(const sf::RenderWindow& window)
 	resources.Load_Textures(textureFolder);
 
 	sf::Image image;
-	image.loadFromFile("./assets/map/map.png");
-	map.Create_Map_From_Image(image);
-	//map.Create_Map_From_Txt_File("map.txt");
+	if (!image.loadFromFile("./assets/map/map.png"))
+		return; // TO-DO: Log error or handle failure
 
-	camera.position = sf::Vector2f(160.0f, 160.0f);
+	player.position = map.Create_Map_From_Image(image);
 }
 
 void Game_Update(float deltaTime)
 {
-	const float movementSpeed = 100.0f;
-	float move = movementSpeed;
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::LShift))
-		move *= 2;
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right))
-		camera.position.x += move * deltaTime;
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left))
-		camera.position.x -= move * deltaTime;
+	player.Update(deltaTime);
+	camera.position = player.position;
 }
 
 void Game_Render(Renderer& renderer)
 {
 	map.Draw(renderer);
+	player.Draw(renderer);
 }
