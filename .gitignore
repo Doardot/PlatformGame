@@ -49,3 +49,4 @@ lib/
 .vs/
 x64/
 *.user
+CMakeUserPresets.json
