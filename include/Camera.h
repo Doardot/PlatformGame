@@ -1,6 +1,7 @@
 #ifndef __CAMERA_H__
 #define __CAMERA_H__
 
+// dependencies
 #include <SFML/Graphics.hpp>
 
 class Camera

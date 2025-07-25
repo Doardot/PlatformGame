@@ -2,6 +2,7 @@
 #define __MAP_H__
 
 #include "Renderer.h"
+// dependencies
 #include <vector>
 #include <string>
 #include <SFML/Graphics.hpp>

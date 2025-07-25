@@ -45,7 +45,6 @@ build/
 vcpkg/
 external/
 
-include/
 lib/
 .vs/
 x64/

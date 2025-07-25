@@ -1,9 +1,12 @@
+#include "../include/Game.h"
+#include "../include/Camera.h"
+#include "../include/Renderer.h"
+//dependencies
 #include <SFML/Graphics.hpp>
-#include "Game.h"
-#include "Camera.h"
-#include "Renderer.h"
+#include <iostream>
 
-int main() {
+int main()
+{
     sf::RenderWindow window(sf::VideoMode({ 800, 800 }), "Platform Game");
     window.setFramerateLimit(60);
     sf::Clock deltaClock;
@@ -13,8 +16,9 @@ int main() {
     while (window.isOpen()) {
         float deltaTime = deltaClock.restart().asSeconds();
 
-        while (const std::optional event = window.pollEvent()) {
-            if (event->is<sf::Event::Closed>()) {
+        sf::Event event;
+        while (window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed) {
                 window.close();
             }
         }

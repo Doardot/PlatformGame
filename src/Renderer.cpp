@@ -1,8 +1,9 @@
-#include "Renderer.h"
+#include "../include/Renderer.h"
+// dependencies
 #include <vector>
 
 Renderer::Renderer(sf::RenderTarget& target)
-	: target(target)
+    : target(target)
 {
 }
 
@@ -16,17 +17,11 @@ Renderer::Renderer(sf::RenderTarget& target)
 
 void Renderer::Draw(const sf::Texture& texture, const sf::Vector2f& position, const sf::Vector2f& size)
 {
-	if (!sprite.has_value())
-		sprite.emplace(texture);
+    sprite.setTexture(texture, true);
+    sprite.setOrigin(sf::Vector2f(texture.getSize().x / 2.0f, texture.getSize().y / 2.0f));
+    sprite.setPosition(position);
+    sprite.setScale(sf::Vector2f(size.x / texture.getSize().x,
+        size.y / texture.getSize().y));
 
-	// TO-DO: Render sprites from spritesheet
-	//sprite->setTextureRect(sourceRect);
-
-	sprite->setTexture(texture, true);
-	sprite->setOrigin((sf::Vector2f)texture.getSize() / 2.0f);
-	sprite->setPosition(position);
-	sprite->setScale(sf::Vector2f(size.x / texture.getSize().x,
-		size.y / texture.getSize().y));
-
-	target.draw(*sprite);
+    target.draw(sprite);
 }

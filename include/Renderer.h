@@ -1,6 +1,7 @@
 #ifndef __RENDERER_H__
 #define __RENDERER_H__
 
+// dependencies
 #include <SFML/Graphics.hpp>
 
 class Renderer
@@ -11,7 +12,7 @@ public:
 	void Draw(const sf::Texture& texture, const sf::Vector2f& position, const sf::Vector2f& size);
 private:
 	sf::RenderTarget& target;
-	std::optional<sf::Sprite> sprite;
+	sf::Sprite sprite;
 };
 
-#endif __RENDERER_H__
+#endif 

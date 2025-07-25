@@ -2,6 +2,7 @@
 #define __PLAYER_H__
 
 #include "Renderer.h"
+// dependencies
 #include <SFML/Graphics.hpp>
 
 class Player
