@@ -7,8 +7,8 @@
 #include <SFML/Graphics.hpp>
 #include <filesystem>
 
-Map map(16.0f);
-Camera camera(320.0f);
+Map map(1.0f);
+Camera camera(20.0f);
 Resources resources;
 Player player;
 
@@ -24,6 +24,7 @@ void Game_Begin(const sf::RenderWindow& window)
         return; // TO-DO: Log error or handle failure
 
     player.position = map.Create_Map_From_Image(image);
+	player.Begin();
 }
 
 void Game_Update(float deltaTime)
