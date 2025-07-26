@@ -2,6 +2,7 @@
 #include "../include/Resources.h"
 #include "../include/Map.h"
 #include "../include/Player.h"
+#include "../include/Physics.h"
 // dependencies
 #include <SFML/Graphics.hpp>
 #include <filesystem>
@@ -16,6 +17,8 @@ void Game_Begin(const sf::RenderWindow& window)
     const std::string textureFolder = std::string(ASSETS_PATH) + "/textures/terrain";
     resources.Load_Textures(textureFolder);
 
+    Physics::Init();
+
     sf::Image image;
     if (!image.loadFromFile(std::string(ASSETS_PATH) + "/textures/map/map.png"))
         return; // TO-DO: Log error or handle failure
@@ -25,6 +28,7 @@ void Game_Begin(const sf::RenderWindow& window)
 
 void Game_Update(float deltaTime)
 {
+    Physics::Update(deltaTime);
     player.Update(deltaTime);
     camera.position = player.position;
 }

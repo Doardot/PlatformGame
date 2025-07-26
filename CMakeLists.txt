@@ -18,6 +18,7 @@ add_executable(${PROJECT_NAME}
     src/Renderer.cpp
     src/Camera.cpp
     src/Resources.cpp
+    src/Physics.cpp
 )
 
 # Asset path available at compile time
